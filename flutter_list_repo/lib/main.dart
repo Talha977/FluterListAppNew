@@ -20,7 +20,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   List arrayStr = [
-    'Open Camera',
+    'Open Cameras',
     'Google Maps',
     'Different Fonts',
     'Different Buttons',
