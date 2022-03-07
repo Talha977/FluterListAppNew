@@ -3,12 +3,12 @@ import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
-void main(List<String> args) {
-  runApp(new MaterialApp(
-    title: 'Camera Screen',
-    home: LandingScreen(),
-  ));
-}
+// void main(List<String> args) {
+//   runApp(new MaterialApp(
+//     title: 'Camera Screen',
+//     home: LandingScreen(),
+//   ));
+// }
 
 class LandingScreen extends StatefulWidget {
   @override
@@ -39,35 +39,35 @@ class _LandingScreenState extends State<LandingScreen> {
           return AlertDialog(
             title: Text('Make A Choice'),
             content: SingleChildScrollView(
-              child: ListBody(children: [
-                kIsWeb == true
-                    ? GestureDetector(
-                        onTap: () async {
-                          // _openGallery();
-                          print("File selected from web");
-                          // Navigator.of(context).pop();
-                        },
-                        child: Text('Select Image From Folder(Unavailable)'))
-                    : [
-                        GestureDetector(
-                            onTap: () async {
-                              _openGallery();
-                              // Navigator.of(context).pop();
-                            },
-                            child: Text('Gallery')),
-                        Padding(padding: EdgeInsets.all(8.0)),
-                        GestureDetector(
-                            onTap: () async {
-                              _openCamera();
-                              // Navigator.of(context).pop();
-                            },
-                            child: Text('Open Camera'))
-                      ],
-              ]),
+              child: ListBody(
+                children: [
+                  kIsWeb == true
+                      ? GestureDetector(
+                          onTap: () async {
+                            // _openGallery();
+                            print("File selected from web");
+                            // Navigator.of(context).pop();
+                          },
+                          child: Text('Select Image From Folder(Unavailable)'),
+                        )
+                      : GestureDetector(
+                          onTap: () async {
+                            _openGallery();
+                            // Navigator.of(context).pop();
+                          },
+                          child: Text('Gallery')),
+                  Padding(padding: EdgeInsets.all(8.0)),
+                  GestureDetector(
+                      onTap: () async {
+                        _openCamera();
+                        // Navigator.of(context).pop();
+                      },
+                      child: Text('Open Camera'))
+                ],
+              ),
             ),
           );
         });
-    ;
   }
 
   /// this function backs the Screen

@@ -1,11 +1,10 @@
-import'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
-
 
 void main(List<String> args) {
   runApp(new MaterialApp(
     title: 'Camera Screen',
-    home: UserPreferenceExample(),
+    home: const UserPreferenceExample(),
   ));
 }
 
@@ -17,21 +16,21 @@ class UserPreferenceExample extends StatefulWidget {
 }
 
 class _UserPreferenceExampleState extends State<UserPreferenceExample> {
-
-    // void initState() {
-    // super.initState();
+  // void initState() {
+  // super.initState();
 
   @override
-  void didChangeDependencies() async{
+  void didChangeDependencies() async {
     super.didChangeDependencies();
     // set your stuff here
     SharedPreferences sf = await SharedPreferences.getInstance();
-    var a = sf.getString("string");
-    print("USERDEFAULTS = $a");
-    strTextField = a;
-    setState((){
+    var tempString = sf.getString("string");
+    print("USERDEFAULTS = $tempString");
+    strTextField = tempString;
+    setState(() {
       getDynamicSF("string").then((value) {
-        strTextField = getDynamicSF("string") ?? "No String Found from Shared Preference.";
+        strTextField =
+            getDynamicSF("string") ?? "No String Found from Shared Preference.";
       });
     });
   }
@@ -44,6 +43,7 @@ class _UserPreferenceExampleState extends State<UserPreferenceExample> {
     sf.setString("string", str);
     print("String is found to be $str");
   }
+
   setIntToSF(int num) async {
     SharedPreferences sf = await SharedPreferences.getInstance();
     sf.setInt("int", num);
@@ -54,24 +54,21 @@ class _UserPreferenceExampleState extends State<UserPreferenceExample> {
     sf.setBool("Bool", boolVal);
   }
 
-    Future<dynamic> getDynamicSF(String key) async{
+  Future<dynamic> getDynamicSF(String key) async {
     SharedPreferences sf = await SharedPreferences.getInstance();
-    dynamic tempVar =  sf.get(key);
+    dynamic tempVar = sf.get(key);
     return tempVar;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: TextField(
-
+        appBar: AppBar(
+          title: const Text('Shared Preferences Screen'),
+        ),
+        body: TextField(
             decoration: new InputDecoration(
-                labelText: strTextField,
-                hintText: "Please enter String"
-            ),
-            onChanged: setStringToSF
-        )
-    );
+                labelText: strTextField, hintText: "Please enter String"),
+            onChanged: setStringToSF));
   }
 }
-

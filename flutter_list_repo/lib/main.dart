@@ -15,6 +15,9 @@ import 'package:flutter_list_repo/Widgets/screen_select.dart';
 
 void main() {
   runApp(MaterialApp(
+    theme: ThemeData(
+      primarySwatch: Colors.blueGrey,
+    ),
     debugShowCheckedModeBanner: false,
     home: MyApp(),
   ));
@@ -33,6 +36,8 @@ class MyApp extends StatelessWidget {
     'Get Response From Server',
     'Open Date Picker Screen',
     'Open Tab Bar Screen',
+    'Local Notifications',
+    'Data Table Screen'
   ];
 
   @override
